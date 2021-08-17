@@ -239,10 +239,10 @@
         <div class="text-div">
             <h2>Excellent for Mobile Devices</h2>
             <p class="main-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores animi, accusamus facilis cupiditate hic voluptatum? Voluptatum alias, cumque temporibus explicabo minima, ex nisi debitis aspernatur corporis nam dicta dolorum quam voluptatibus ducimus impedit quasi tempore vero at. Voluptatum, quas architecto.</p>
-            <p class="list-item"><img src="img/01.png">&nbsp&nbsp&nbspNam liber tempor cum soluta nobis eleifend option</p>
-            <p class="list-item"><img src="img/01.png">&nbsp&nbsp&nbspNam liber tempor cum soluta nobis eleifend option waxom</p>
-            <p class="list-item"><img src="img/01.png">&nbsp&nbsp&nbspNam liber tempor cum soluta nobis eleifend option waxom</p>
-            <p class="list-item"><img src="img/01.png">&nbsp&nbsp&nbspNam liber tempor cum soluta nobis eleifend option</p>
+            <p class="list-item"><img src="img/01.png">Nam liber tempor cum soluta nobis eleifend option</p>
+            <p class="list-item"><img src="img/01.png">Nam liber tempor cum soluta nobis eleifend option waxom</p>
+            <p class="list-item"><img src="img/01.png">Nam liber tempor cum soluta nobis eleifend option waxom</p>
+            <p class="list-item"><img src="img/01.png">Nam liber tempor cum soluta nobis eleifend option</p>
         </div>
     </div>
 </div>
@@ -374,33 +374,47 @@
 <div class="desc-div">
     <div class="column">
         <div class="waxom-logo"><img src="img/Waxom.png"></div>
-        <div class="desc">Explicabo dolorum culpa laudantium eligendi nisi eum, debitis cumque quod deserunt magnam, laboriosam nostrum, aliquam consequatur amet quaerat quam nulla quasi voluptate commodi. Iusto facilis minus quos totam. Quae vel dolor facilis.</div>
+        <div class="event"><p class="desc">Explicabo dolorum culpa laudantium eligendi nisi eum, debitis cumque quod deserunt magnam, laboriosam nostrum, aliquam consequatur amet quaerat quam nulla quasi voluptate commodi. Iusto facilis minus quos totam. Quae vel dolor facilis.</p></div>
         <div class="more-link"><a class="more">Read More <i class="fas fa-caret-right"></i></a></div>
     </div>
 
     <div class="column">
         <div class="title">Recent Posts</div>
-        <div class="date-1">September 08, 2015</div>
-        <div class="desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt, quas!</div>
+
+        <div class="event">
+            <div class="date-1">September 08, 2015</div>
+            <div class="desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt, quas!</div>
+        </div>
         <hr>
-        <div class="date-2">September 08, 2015</div>
-        <div class="desc-yellow">Lorem ipsum, waxom dolor sit amet consectetur adipisicing elit. Incidunt, quas!</div>
+        <div class="event">
+            <div class="date-1">September 08, 2015</div>
+            <div class="desc">Lorem ipsum, waxom dolor sit amet consectetur adipisicing elit. Incidunt, quas!</div>
+        </div>
         <hr>
-        <div class="date-1">September 08, 2015</div>
-        <div class="desc">Itaque eaque cum aliquid saepe officiis nostrum quaerat recusandae, nemo deserunt atque!</div>
+        <div class="event">
+            <div class="date-1">September 08, 2015</div>
+            <div class="desc">Itaque eaque cum aliquid saepe officiis nostrum quaerat recusandae, nemo deserunt atque!</div>
+        </div>
 
     </div>
 
     <div class="column">
         <div class="title">Our Twitter</div>
-        <div class="desc"><a class="twitter-link">@waxom</a> Lorem ipsum dolor sit amet Waxon consectetur adipisicing elit. Et, velit.</div>
-        <div class="time-1">3 mins ago</div>
+
+        <div class="event">
+            <div class="desc"><a class="twitter-link">@waxom</a> Lorem ipsum dolor sit amet Waxon consectetur adipisicing elit. Et, velit.</div>
+            <div class="time-1">3 mins ago</div>
+        </div>
         <hr>
-        <div class="desc">Mirum est <a class="twitter-link">#envato</a> Minus ullam nulla quibusdam voluptates accusamus in!</div>
-        <div class="time-1">5 hours ago</div>
+        <div class="event">
+            <div class="desc">Mirum est <a class="twitter-link">#envato</a> Minus ullam nulla quibusdam voluptates accusamus in!</div>
+            <div class="time-1">5 hours ago</div>
+        </div>
         <hr>
-        <div class="desc">Soluta nobis option <a class="torrent">bit.ly/1Hnlso7</a></div>
-        <div class="time-1">20 days ago</div>
+        <div class="event">
+            <div class="desc">Soluta nobis option <a class="torrent">bit.ly/1Hnlso7</a></div>
+            <div class="time-1">20 days ago</div>
+        </div>
     </div>
 
     <div class="column">

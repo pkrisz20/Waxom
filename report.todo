@@ -34,8 +34,11 @@
     ✔ Befejezés, átadásra kész
 
 2021.08.16 Hétfő:
-    ☐ Hasonló szinek használata a témához
-    ☐ CountUp JQuery
-    ☐ Waypoints
+    ✔ Meeting (13:00 - 15:15)
 
 2021.08.17 Kedd:
+    ✔ Témához hasonló szinek használata (7:15 - 9:10)
+    ✔ &NBSP helyett padding :D (kb 10 másodperc)
+    ☐ Kód szépitése
+    ✔ Félresikerült hover effektek javitása (7:15 - 10:00)
+    ☐ CountUp, JQuery és Waypoints átirása

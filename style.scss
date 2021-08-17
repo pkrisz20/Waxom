@@ -5,6 +5,7 @@ body {
     padding: 0;
 }
 
+/* --------------------WRAPPERS------------------- */
 .wrapper-menu {
     margin-top: 800px;
     width: 75%;
@@ -21,71 +22,69 @@ body {
 /* ---------------------NAVBAR--------------------- */
 /* //////////////////////////////////////////////// */
 
-//-------------------------------------//
 //----ANIMATION FOR HAMBURGER MENU-----//
 //-------------------------------------//
 
-.toggle-div {
-    visibility: hidden;
-    position: fixed;
-    top: .8rem;
-    right: 1.5rem;
-    z-index: 3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 60px;
-    height: 60px;
-    cursor: pointer;
-    transition: all .5s ease-in-out;
+.toggle {
+
+    &-div {
+        visibility: hidden;
+        position: fixed;
+        top: .8rem;
+        right: 1.5rem;
+        z-index: 3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 60px;
+        height: 60px;
+        cursor: pointer;
+        transition: all .5s ease-in-out;
+    }
+
+    &-button {
+        width: 50px;
+        height: 6px;
+        background-color: $white;
+        border-radius: 5px;
+        transition: all .5s ease-in-out;
+
+        &::before, &::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 6px;
+            background-color: $white;
+            border-radius: 5px;
+            transition: all .5s ease-in-out;
+        }
+        
+        &::before {
+            transform: translateY(-16px);
+        }
+        
+        &::after {
+            transform: translateY(16px);
+        }
+    }
 }
 
 .open {
     .toggle-button {
         transform: translateX(-50px);
         background: transparent;
+
+        &::before {
+            transform: rotate(45deg) translate(35px, -35px);
+        }
+
+        &::after {
+            transform: rotate(-45deg) translate(35px, 35px);
+        }
     }
 }
 
-.open {
-    .toggle-button::before {
-        transform: rotate(45deg) translate(35px, -35px);
-    }
-}
-
-.open {
-    .toggle-button::after {
-        transform: rotate(-45deg) translate(35px, 35px);
-    }
-}
-
-.toggle-button {
-    width: 50px;
-    height: 6px;
-    background-color: $white;
-    border-radius: 5px;
-    transition: all .5s ease-in-out;
-}
-
-.toggle-button::before, .toggle-button::after {
-    content: '';
-    position: absolute;
-    width: 50px;
-    height: 6px;
-    background-color: $white;
-    border-radius: 5px;
-    transition: all .5s ease-in-out;
-}
-
-.toggle-button::before {
-    transform: translateY(-16px);
-}
-
-.toggle-button::after {
-    transform: translateY(16px);
-}
-//------------------------------------//
-//------------------------------------//
+//----------------END------------------//
 
 .sticky {
     position: sticky;
@@ -96,6 +95,9 @@ body {
 }
 
 .navbar {
+    width: 100%;
+    height: 80px;
+    transition: 1.5s;
 
     .logo {
         position: fixed;
@@ -108,10 +110,6 @@ body {
             height: auto;
         }
     }
-
-    width: 100%;
-    height: 80px;
-    transition: 1.5s;
 
     .menubar {
         visibility: visible;
@@ -132,14 +130,107 @@ body {
                 color: $white;
                 transition: 0.4s;
                 text-decoration: none;
+
+                &:hover {
+                    cursor: pointer;
+                    color: $white-yellow-combo;
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: 990px) {
+        .toggle-div {
+            visibility: visible;
+        }
+
+        .logo {
+            position: fixed;
+            z-index: 2;
+            left: 1%;
+            top: 20px;
+        
+            .img-logo {
+                width: 120px;
+                height: auto;
             }
         }
 
-        a:hover {
-            cursor: pointer;
-            color: $white-yellow-combo;
+        .menubar {
+            margin-top: 0;
+            padding: 0;
+            width: 100%;
+            visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            top: 0;
+            height: auto;
+            opacity: 0;
+        }
+
+        .show {
+            visibility: visible;
+            opacity: 1;
+            background-color: $dark-gray;
+            height: auto;
+            animation-delay: 0s;
+            animation: appear 500ms;
+
+            li {
+                animation-delay: 5s;
+                animation: translateX 800ms;
+            }
+
+            @keyframes appear {
+                0% {
+                    opacity: 0;
+                    transform: translateX(990px);
+                }
+
+                100% {
+                    opacity: 1;
+                    transform: translateX(0px);
+                }
+            }
+
+            @keyframes translateX {
+                0% {
+                  opacity: 0;
+                  transform: translateX(400px);
+                }
+                
+                85% {
+                  transform: translateX(-50px);
+                }
+              
+                100% {
+                  opacity: 1;
+                  transform: translateX(0px);
+                }
+            }
+        }
+
+        .out {
+            visibility: visible;
+            background-color: $dark-gray;
+            animation-delay: 0s;
+            animation: disappear 600ms;
+
+            @keyframes disappear {
+                0% {
+                    opacity: 1;
+                    transform: translateX(0px);
+                }
+
+                100% {
+                    opacity: 1;
+                    transform: translateX(990px);
+                }
+            }
         }
     }
+
 }
 
 /* //////////////////////////////////////////////// */
@@ -209,11 +300,11 @@ body {
             color: $white;
             border-radius: 5px;
             transition: 0.5s;
-        }
 
-        .header-btn:hover {
-            cursor: pointer;
-            background-color: $dark-gray;
+            &:hover {
+                cursor: pointer;
+                background-color: $dark-gray;
+            }
         }
     }
 }
@@ -254,22 +345,22 @@ body {
             color: #e1dedb;
             width: 90px;
         }
-    }
 
-    .card:hover {
-        cursor: pointer;
-
-        .icon {
-            color: $white-yellow-combo;
-        }
-
-        h3 {
-            color: $white-yellow-combo;
-        }
-
-        hr {    
-            background-color: $white-yellow-combo;
-            color: $white-yellow-combo;
+        &:hover {
+            cursor: pointer;
+    
+            .icon {
+                color: $white-yellow-combo;
+            }
+    
+            h3 {
+                color: $white-yellow-combo;
+            }
+    
+            hr {    
+                background-color: $white-yellow-combo;
+                color: $white-yellow-combo;
+            }
         }
     }
 }
@@ -356,11 +447,11 @@ body {
                 color: $white;
                 font-weight: 700;
                 transition: 0.5s;
-            }
 
-            .btn:hover {
-                cursor: pointer;
-                background-color: $dark-gray;
+                &:hover {
+                    cursor: pointer;
+                    background-color: $dark-gray;
+                }
             }
         }
     }
@@ -424,7 +515,7 @@ body {
         justify-items: center;
 
         .image-card {
-            transition: 0.8s;
+            transition: 0.5s;
             font-family: $font-family;
             background-color: #f1efea;
             width: 430px;
@@ -439,22 +530,25 @@ body {
                 position: absolute;
                 top: 30%;
                 left: 35%;
+                transition: 0.5s;
 
                 .hover-link {
                     padding: 20px;
-                    color: $white-yellow-combo;
+                    color: $white;
                     font-size: 30px;
+                    transition: 0.5s;
                 }
     
                 .hover-search {
                     padding: 20px;
                     color: $white;
                     font-size: 30px;
+                    transition: 0.5s;
                 }
             }
 
             img {
-                transition: 0.8s;
+                transition: 0.5s;
                 display: block;
                 width: 100%;
                 height: 340px;
@@ -464,19 +558,19 @@ body {
             h4 {
                 color: $white-yellow-combo;
                 margin-left: 25px;
-            }
 
-            h4::before {
-                transition: 0.8s;
-                content: "";
-                position: absolute;
-                top: 300px;
-                left: 25px;
-                z-index: 2;
-                width: 0;
-                height: 0;
-                border: 20px solid transparent;
-                border-bottom-color: #f1efea;
+                &::before {
+                    transition: 0.5s;
+                    content: "";
+                    position: absolute;
+                    top: 300px;
+                    left: 25px;
+                    z-index: 2;
+                    width: 0;
+                    height: 0;
+                    border: 20px solid transparent;
+                    border-bottom-color: #f1efea;
+                }
             }
 
             p {
@@ -488,13 +582,20 @@ body {
 
         .image-card:hover {
             background-color: #352f2d;
+            cursor: pointer;
 
             .hover-icons {
                 visibility: visible;
-            }
 
-            .hover-icons:hover {
-                cursor: pointer;
+                .hover-link:hover {
+                    cursor: pointer;
+                    color: $white-yellow-combo;
+                }
+
+                .hover-search:hover {
+                    cursor: pointer;
+                    color: $white-yellow-combo;
+                }
             }
 
             img {
@@ -503,10 +604,30 @@ body {
 
             h4 {
                 color: $white;
-            }
 
-            h4::before {
-                border-bottom-color: #352f2d;
+                &::before {
+                    border-bottom-color: #352f2d;
+                }
+
+                &::after{
+                    content: '';
+                    position: absolute;
+                    width: 45%;
+                    height: 2px;
+                    left: 22px;
+                    bottom: 45px;
+                    background-color: $white;
+                    transform: scale(0, 1);
+                    transition: transform 0.4s ease;
+                }
+
+                &:hover::after {
+                    transform: scale(1, 1);
+                }
+
+                &:hover {
+                    cursor: pointer;
+                }
             }
 
             p {
@@ -531,11 +652,11 @@ body {
             border-radius: 5px;
             transition: 0.5s;
             border: none;
-        }
 
-        .btn-load-more:hover {
-            cursor: pointer;
-            background-color: $dark-gray;
+            &:hover {
+                cursor: pointer;
+                background-color: $dark-gray;
+            }
         }
     }
 }
@@ -573,11 +694,11 @@ body {
 
         #play {
             transition: 0.5s;
-        }
 
-        #play:hover {
-            cursor: pointer;
-            color: #0080ff;
+            &:hover {
+                cursor: pointer;
+                color: $white-yellow-combo;
+            }
         }
     
         .play-icon, h2, h1, p {
@@ -645,6 +766,7 @@ body {
 
             img {
                 margin-bottom: -5px;
+                padding-right: 10px;
             }
         }
     }
@@ -786,38 +908,63 @@ body {
                 .read {
                     font-family: $font-family;
                     color: $white-yellow-combo;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            &:hover {
+                background-color: #352f2d;
+                cursor: pointer;
+    
+                .calendar {
+    
+                    .calendar-day {
+                        background-color: #c7b199;
+                    }
+    
+                    .calendar-month {
+                        background-color: #a48d71;
+                    }
                 }
     
-                .read:hover {
-                    cursor: pointer;
+                img {
+                    filter: brightness(50%);
                 }
-            }
-        }
+    
+                h4 {
+                    color: $white-yellow-combo;
 
-        .post:hover {
-            background-color: #352f2d;
+                    &:hover {
+                        cursor: pointer;
+                    }
 
-            .calendar {
-
-                .calendar-day {
-                    background-color: #c7b199;
+                    &::after{
+                        content: '';
+                        position: absolute;
+                        width: 50%;
+                        height: 2px;
+                        left: 18px;
+                        bottom: 85px;
+                        background-color: $white-yellow-combo;
+                        transform: scale(0, 1);
+                        transition: transform 0.4s ease;
+                    }
+    
+                    &:hover::after {
+                        transform: scale(1, 1);
+                    }
+    
+                    &:hover {
+                        cursor: pointer;
+                    }
                 }
-
-                .calendar-month {
-                    background-color: #a48d71;
+    
+                p {
+                    color: $white;
                 }
-            }
-
-            img {
-                filter: brightness(50%);
-            }
-
-            h4 {
-                color: $white-yellow-combo;
-            }
-
-            p {
-                color: $white;
             }
         }
     }
@@ -830,10 +977,10 @@ body {
 
         img{
             padding-left: 20px;
-        }
 
-        img:hover {
-            cursor: pointer;
+            &:hover {
+                cursor: pointer;
+            }
         }
     }
 }
@@ -919,11 +1066,11 @@ body {
             .more {
                 transition: 0.5s;
                 color: $white;
-            }
-    
-            .more:hover {
-                cursor: pointer;
-                color: $white-yellow-combo;
+
+                &:hover {
+                    cursor: pointer;
+                    color: $white-yellow-combo;
+                }
             }
         }
 
@@ -941,52 +1088,56 @@ body {
             color: $clear-gray;
             margin-top: 10px;
             margin-bottom: 5px;
+            transition: 0.5s;
 
             .torrent {
                 color: $white;
                 transition: 0.5s;
-            }
 
-            .torrent:hover {
-                cursor: pointer;
-                color: #00bff3;
+                &:hover {
+                    cursor: pointer;
+                    color: #00bff3;
+                }
             }
 
             .twitter-link {
                 color:  #00bff3;
-                transition: 0.5s;
-            }
+                transition: .4s; 
 
-            .twitter-link:hover {
-                cursor: pointer;
-                background-color: $white;
+                &:hover {
+                    color:#e74c3c;
+                }
             }
-        }
-
-        .desc-yellow {
-            color: $white-yellow-combo;
-            font-size: 14px;
-            margin-top: 10px;
-            margin-bottom: 20px;
-            line-height: 26px;
         }
 
         .date-1 {
             color: $dark-gray;
             font-size: 12px;
             margin-top: 15px;
-        }
-
-        .date-2 {
-            color: $white;
-            font-size: 12px;
-            margin-top: 15px;
+            transition: 0.5s;
         }
 
         .time-1 {
             font-size: 12px;
             color: $dark-gray;
             margin-bottom: 15px;
+            transition: 0.5s;
+        }
+
+        .event:hover {
+            cursor: pointer;
+            
+            .desc {
+                color: $white-yellow-combo;
+            }
+
+            .date-1 {
+                color: $white;
+            }
+
+            .time-1 {
+                color: $white;
+            }
         }
 
         /* //////////////////////////////////////////////// */
@@ -1038,22 +1189,7 @@ body {
         a:hover {
             cursor: pointer;
             transition: 0.5s;
-        }
-
-        .privacy:hover {
-            color: $white;
-        }
-
-        .FAQ-link {
             color: $white-yellow-combo;
-        }
-
-        .FAQ-link:hover {
-            color: $white;
-        }
-
-        .supp:hover {
-            color: $white;
         }
     }
 
@@ -1068,11 +1204,11 @@ body {
             transition: 0.5s;
             color: $white;
             text-decoration: none;
-        }
 
-        .erdsoft:hover {
-            cursor: pointer;
-            color: #00bff3;
+            &:hover {
+                cursor: pointer;
+                color: #00bff3;
+            }
         }
 
         #erdsoft-logo {
@@ -1086,111 +1222,10 @@ body {
             text-decoration: none;
             transition: 0.5s;
             color: $white;
-        }
 
-        .envato:hover {
-            cursor: pointer;
-            color: $white-yellow-combo;
-        }
-    }
-}
-
-/* ------------------------------------------------ */
-/* ------------------MEDIA QUERIES----------------- */
-/* ------------------------------------------------ */
-
-/* ---------------------NAVBAR CHANGE------------------ */
-
-@media only screen and (max-width: 990px) {
-    .navbar {
-
-        .toggle-div {
-            visibility: visible;
-        }
-
-        .logo {
-            position: fixed;
-            z-index: 2;
-            left: 1%;
-            top: 20px;
-        
-            .img-logo {
-                width: 120px;
-                height: auto;
-            }
-        }
-
-        .menubar {
-            margin-top: 0;
-            padding: 0;
-            width: 100%;
-            visibility: hidden;
-            display: flex;
-            flex-direction: column;
-            text-align: center;
-            top: 0;
-            height: auto;
-            opacity: 0;
-        }
-
-        .show {
-            visibility: visible;
-            opacity: 1;
-            background-color: $dark-gray;
-            height: auto;
-            animation-delay: 0s;
-            animation: appear 500ms;
-
-            li {
-                animation-delay: 5s;
-                animation: translateX 800ms;
-            }
-
-            @keyframes appear {
-                0% {
-                    opacity: 0;
-                    transform: translateX(990px);
-                }
-
-                100% {
-                    opacity: 1;
-                    transform: translateX(0px);
-                }
-            }
-
-            @keyframes translateX {
-                0% {
-                  opacity: 0;
-                  transform: translateX(400px);
-                }
-                
-                85% {
-                  transform: translateX(-50px);
-                }
-              
-                100% {
-                  opacity: 1;
-                  transform: translateX(0px);
-                }
-            }
-        }
-
-        .out {
-            visibility: visible;
-            background-color: $dark-gray;
-            animation-delay: 0s;
-            animation: disappear 600ms;
-
-            @keyframes disappear {
-                0% {
-                    opacity: 1;
-                    transform: translateX(0px);
-                }
-
-                100% {
-                    opacity: 1;
-                    transform: translateX(990px);
-                }
+            &:hover {
+                cursor: pointer;
+                color: $white-yellow-combo;
             }
         }
     }
@@ -1203,46 +1238,61 @@ body {
     // -------------------------------------- //
     // ---------SMALLER HAMBURGER MENU------- //
     // -------------------------------------- //
+
     .toggle-div {
+        visibility: hidden;
+        position: fixed;
+        top: .8rem;
+        right: 1.5rem;
+        z-index: 3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 40px;
         height: 40px;
+        cursor: pointer;
+        transition: all .5s ease-in-out;
+    
+        .toggle-button {
+            width: 40px;
+            height: 3px;
+            background-color: $white;
+            border-radius: 5px;
+            transition: all .5s ease-in-out;
+    
+            &::before, &::after {
+                content: '';
+                position: absolute;
+                width: 40px;
+                height: 3px;
+                background-color: $white;
+                border-radius: 5px;
+                transition: all .5s ease-in-out;
+            }
+            
+            &::before {
+                transform: translateY(-10px);
+            }
+            
+            &::after {
+                transform: translateY(10px);
+            }
+        }
     }
     
     .open {
         .toggle-button {
             transform: translateX(-30px);
+            background-color: transparent;
+    
+            &::before {
+                transform: rotate(45deg) translate(25px, -25px);
+            }
+    
+            &::after {
+                transform: rotate(-45deg) translate(25px, 25px);
+            }
         }
-    }
-    
-    .open {
-        .toggle-button::before {
-            transform: rotate(45deg) translate(25px, -25px);
-        }
-    }
-    
-    .open {
-        .toggle-button::after {
-            transform: rotate(-45deg) translate(25px, 25px);
-        }
-    }
-    
-    .toggle-button {
-        width: 40px;
-        height: 3px;
-    }
-    
-    .toggle-button::before, .toggle-button::after {
-        content: '';
-        width: 40px;
-        height: 3px;
-    }
-    
-    .toggle-button::before {
-        transform: translateY(-10px);
-    }
-    
-    .toggle-button::after {
-        transform: translateY(10px);
     }
 
     // -------------------------------------- //
@@ -1479,33 +1529,51 @@ body {
                         margin-left: 0;
                     }
                 }
+            }
 
-                .image-card:hover {
-                    background-color: #352f2d;
-        
-                    .hover-icons {
-                        visibility: visible;
-                    }
-        
-                    .hover-icons:hover {
+            .image-card:hover {
+                background-color: #352f2d;
+    
+                .hover-icons {
+                    visibility: visible;
+    
+                    .hover-link:hover {
                         cursor: pointer;
-                    }
-        
-                    img {
-                        filter: brightness(40%);
-                    }
-        
-                    h4 {
-                        color: $white;
-                    }
-
-                    h4::before {
-                        border-bottom-color: #352f2d;
-                    }
-        
-                    p {
                         color: $white-yellow-combo;
                     }
+    
+                    .hover-search:hover {
+                        cursor: pointer;
+                        color: $white-yellow-combo;
+                    }
+                }
+    
+                img {
+                    filter: brightness(40%);
+                }
+    
+                h4 {
+                    color: $white;
+    
+                    &::before {
+                        border-bottom-color: #352f2d;
+                    }
+
+                    &::after{
+                        content: '';
+                        position: absolute;
+                        width: 80%;
+                        height: 2px;
+                        left: 35px;
+                        bottom: 60px;
+                        background-color: $white;
+                        transform: scale(0, 1);
+                        transition: transform 0.4s ease;
+                    }
+                }
+    
+                p {
+                    color: $white-yellow-combo;
                 }
             }
         }
@@ -1735,6 +1803,12 @@ body {
     
                 h4 {
                     color: $white-yellow-combo;
+
+                    &::after{
+                        width: 85%;
+                        left: 18px;
+                        bottom: 115px;
+                    }
                 }
     
                 p {
@@ -1854,13 +1928,6 @@ body {
                 margin-bottom: 5px;
             }
     
-            .desc-yellow {
-                color: $white-yellow-combo;
-                font-size: 15px;
-                margin-top: 5px;
-                margin-bottom: 5px;
-            }
-    
             /* //////////////////////////////////////////////// */
             /* ---------------GRID IN FOURTH COLUMN------------ */
             /* //////////////////////////////////////////////// */
@@ -1921,46 +1988,61 @@ body {
     // -------------------------------------- //
     // ---------SMALLER HAMBURGER MENU------- //
     // -------------------------------------- //
+
     .toggle-div {
+        visibility: hidden;
+        position: fixed;
+        top: .8rem;
+        right: 1.5rem;
+        z-index: 3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 40px;
         height: 40px;
+        cursor: pointer;
+        transition: all .5s ease-in-out;
+    
+        .toggle-button {
+            width: 40px;
+            height: 3px;
+            background-color: $white;
+            border-radius: 5px;
+            transition: all .5s ease-in-out;
+    
+            &::before, &::after {
+                content: '';
+                position: absolute;
+                width: 40px;
+                height: 3px;
+                background-color: $white;
+                border-radius: 5px;
+                transition: all .5s ease-in-out;
+            }
+            
+            &::before {
+                transform: translateY(-10px);
+            }
+            
+            &::after {
+                transform: translateY(10px);
+            }
+        }
     }
     
     .open {
         .toggle-button {
             transform: translateX(-30px);
+            background-color: transparent;
+    
+            &::before {
+                transform: rotate(45deg) translate(25px, -25px);
+            }
+    
+            &::after {
+                transform: rotate(-45deg) translate(25px, 25px);
+            }
         }
-    }
-    
-    .open {
-        .toggle-button::before {
-            transform: rotate(45deg) translate(25px, -25px);
-        }
-    }
-    
-    .open {
-        .toggle-button::after {
-            transform: rotate(-45deg) translate(25px, 25px);
-        }
-    }
-    
-    .toggle-button {
-        width: 40px;
-        height: 3px;
-    }
-    
-    .toggle-button::before, .toggle-button::after {
-        content: '';
-        width: 40px;
-        height: 3px;
-    }
-    
-    .toggle-button::before {
-        transform: translateY(-10px);
-    }
-    
-    .toggle-button::after {
-        transform: translateY(10px);
     }
 
     // -------------------------------------- //
@@ -2196,16 +2278,22 @@ body {
                         margin-left: 0;
                     }
                 }
-        
+
                 .image-card:hover {
                     background-color: #352f2d;
         
                     .hover-icons {
                         visibility: visible;
-                    }
         
-                    .hover-icons:hover {
-                        cursor: pointer;
+                        .hover-link:hover {
+                            cursor: pointer;
+                            color: $white-yellow-combo;
+                        }
+        
+                        .hover-search:hover {
+                            cursor: pointer;
+                            color: $white-yellow-combo;
+                        }
                     }
         
                     img {
@@ -2214,10 +2302,17 @@ body {
         
                     h4 {
                         color: $white;
-                    }
+        
+                        &::before {
+                            border-bottom-color: #352f2d;
+                        }
 
-                    h4::before {
-                        border-bottom-color: #352f2d;
+                        &::after{
+                            width: 60%;
+                            height: 2px;
+                            left: 85px;
+                            bottom: 60px;
+                        }
                     }
         
                     p {
@@ -2451,6 +2546,12 @@ body {
     
                 h4 {
                     color: $white-yellow-combo;
+
+                    &::after{
+                        width: 65%;
+                        left: 18px;
+                        bottom: 115px;
+                    }
                 }
     
                 p {
@@ -2559,13 +2660,6 @@ body {
     
             .desc {
                 line-height: 24px;
-                font-size: 15px;
-                margin-top: 5px;
-                margin-bottom: 5px;
-            }
-    
-            .desc-yellow {
-                color: $white-yellow-combo;
                 font-size: 15px;
                 margin-top: 5px;
                 margin-bottom: 5px;
@@ -2788,7 +2882,7 @@ body {
         
                         .hover-link {
                             padding: 10px;
-                            color: $white-yellow-combo;
+                            color: $white;
                             font-size: 20px;
                         }
             
@@ -2835,10 +2929,16 @@ body {
         
                     .hover-icons {
                         visibility: visible;
-                    }
-        
-                    .hover-icons:hover {
-                        cursor: pointer;
+
+                        .hover-link:hover {
+                            cursor: pointer;
+                            color: $white-yellow-combo;
+                        }
+    
+                        .hover-search:hover {
+                            cursor: pointer;
+                            color: $white-yellow-combo;
+                        }
                     }
         
                     img {
@@ -2847,10 +2947,17 @@ body {
         
                     h4 {
                         color: $white;
-                    }
 
-                    h4::before {
-                        border-bottom-color: #352f2d;
+                        &::before {
+                            border-bottom-color: #352f2d;
+                        }
+
+                        &::after{
+                            width: 90%;
+                            height: 2px;
+                            left: 12px;
+                            bottom: 45px;
+                        }
                     }
         
                     p {
@@ -3061,6 +3168,12 @@ body {
     
                 h4 {
                     color: $white-yellow-combo;
+
+                    &::after{
+                        width: 80%;
+                        left: 18px;
+                        bottom: 105px;
+                    }
                 }
     
                 p {
@@ -3178,14 +3291,6 @@ body {
                 font-size: 14px;
                 margin-top: 5px;
                 margin-bottom: 5px;
-            }
-    
-            .desc-yellow {
-                color: $white-yellow-combo;
-                font-size: 14px;
-                margin-top: 5px;
-                margin-bottom: 5px;
-                line-height: 22px;
             }
     
             /* //////////////////////////////////////////////// */
@@ -3367,7 +3472,7 @@ body {
         
                         .hover-link {
                             padding: 20px;
-                            color: $white-yellow-combo;
+                            color: $white;
                             font-size: 30px;
                         }
             
@@ -3414,10 +3519,16 @@ body {
         
                     .hover-icons {
                         visibility: visible;
-                    }
-        
-                    .hover-icons:hover {
-                        cursor: pointer;
+
+                        .hover-link:hover {
+                            cursor: pointer;
+                            color: $white-yellow-combo;
+                        }
+    
+                        .hover-search:hover {
+                            cursor: pointer;
+                            color: $white-yellow-combo;
+                        }
                     }
         
                     img {
@@ -3426,10 +3537,17 @@ body {
         
                     h4 {
                         color: $white;
-                    }
 
-                    h4::before {
-                        border-bottom-color: #352f2d;
+                        &::before {
+                            border-bottom-color: #352f2d;
+                        }
+
+                        &::after{
+                            width: 70%;
+                            height: 2px;
+                            left: 15px;
+                            bottom: 45px;
+                        }
                     }
         
                     p {
@@ -3599,6 +3717,12 @@ body {
     
                 h4 {
                     color: $white-yellow-combo;
+
+                    &::after{
+                        width: 70%;
+                        left: 18px;
+                        bottom: 100px;
+                    }
                 }
     
                 p {
@@ -3737,22 +3861,8 @@ body {
                 }
             }
     
-            .desc-yellow {
-                color: $white-yellow-combo;
-                font-size: 14px;
-                margin-top: 5px;
-                margin-bottom: 10px;
-                line-height: 26px;
-            }
-    
             .date-1 {
                 color: $dark-gray;
-                font-size: 12px;
-                margin-top: 10px;
-            }
-    
-            .date-2 {
-                color: $white;
                 font-size: 12px;
                 margin-top: 10px;
             }
@@ -3920,10 +4030,16 @@ body {
         
                     .hover-icons {
                         visibility: visible;
-                    }
-        
-                    .hover-icons:hover {
-                        cursor: pointer;
+
+                        .hover-link:hover {
+                            cursor: pointer;
+                            color: $white-yellow-combo;
+                        }
+    
+                        .hover-search:hover {
+                            cursor: pointer;
+                            color: $white-yellow-combo;
+                        }
                     }
         
                     img {
@@ -3932,10 +4048,17 @@ body {
         
                     h4 {
                         color: $white;
-                    }
 
-                    h4::before {
-                        border-bottom-color: #352f2d;
+                        &::before {
+                            border-bottom-color: #352f2d;
+                        }
+
+                        &::after{
+                            width: 70%;
+                            height: 2px;
+                            left: 18px;
+                            bottom: 45px;
+                        }
                     }
         
                     p {
@@ -4084,6 +4207,12 @@ body {
     
                 h4 {
                     color: $white-yellow-combo;
+
+                    &::after{
+                        width: 70%;
+                        left: 18px;
+                        bottom: 100px;
+                    }
                 }
     
                 p {
@@ -4288,10 +4417,16 @@ body {
         
                     .hover-icons {
                         visibility: visible;
-                    }
-        
-                    .hover-icons:hover {
-                        cursor: pointer;
+
+                        .hover-link:hover {
+                            cursor: pointer;
+                            color: $white-yellow-combo;
+                        }
+    
+                        .hover-search:hover {
+                            cursor: pointer;
+                            color: $white-yellow-combo;
+                        }
                     }
         
                     img {
@@ -4300,10 +4435,17 @@ body {
         
                     h4 {
                         color: $white;
-                    }
 
-                    h4::before {
-                        border-bottom-color: #352f2d;
+                        &::before {
+                            border-bottom-color: #352f2d;
+                        }
+
+                        &::after{
+                            width: 65%;
+                            height: 2px;
+                            left: 18px;
+                            bottom: 45px;
+                        }
                     }
         
                     p {
@@ -4412,6 +4554,12 @@ body {
     
                 h4 {
                     color: $white-yellow-combo;
+
+                    &::after{
+                        width: 60%;
+                        left: 18px;
+                        bottom: 100px;
+                    }
                 }
     
                 p {
@@ -4583,10 +4731,16 @@ body {
         
                     .hover-icons {
                         visibility: visible;
-                    }
-        
-                    .hover-icons:hover {
-                        cursor: pointer;
+
+                        .hover-link:hover {
+                            cursor: pointer;
+                            color: $white-yellow-combo;
+                        }
+    
+                        .hover-search:hover {
+                            cursor: pointer;
+                            color: $white-yellow-combo;
+                        }
                     }
         
                     img {
@@ -4595,6 +4749,13 @@ body {
         
                     h4 {
                         color: $white;
+
+                        &::after{
+                            width: 55%;
+                            height: 2px;
+                            left: 20px;
+                            bottom: 45px;
+                        }
                     }
         
                     p {
@@ -4703,6 +4864,10 @@ body {
     
                 h4 {
                     color: $white-yellow-combo;
+
+                    &::after{
+                        width: 55%;
+                    }
                 }
     
                 p {
